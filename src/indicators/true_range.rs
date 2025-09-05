@@ -21,11 +21,11 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// extern crate ta;
+/// extern crate ta_panther;
 /// #[macro_use] extern crate assert_approx_eq;
 ///
-/// use ta::{Next, DataItem};
-/// use ta::indicators::TrueRange;
+/// use ta_panther::{Next, DataItem};
+/// use ta_panther::indicators::TrueRange;
 ///
 /// fn main() {
 ///     let data = vec![

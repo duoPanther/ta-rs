@@ -12,8 +12,8 @@
 //!
 //! # Example
 //! ```
-//! use ta::indicators::ExponentialMovingAverage;
-//! use ta::Next;
+//! use ta_panther::indicators::ExponentialMovingAverage;
+//! use ta_panther::Next;
 //!
 //! // it can return an error, when an invalid period is passed (e.g. 0)
 //! let mut ema = ExponentialMovingAverage::new(3).unwrap();

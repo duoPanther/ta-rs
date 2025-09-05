@@ -24,8 +24,8 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// use ta::indicators::SimpleMovingAverage;
-/// use ta::Next;
+/// use ta_panther::indicators::SimpleMovingAverage;
+/// use ta_panther::Next;
 ///
 /// let mut sma = SimpleMovingAverage::new(3).unwrap();
 /// assert_eq!(sma.next(10.0), 10.0);

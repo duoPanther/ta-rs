@@ -18,8 +18,8 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// use ta::indicators::SlowStochastic;
-/// use ta::Next;
+/// use ta_panther::indicators::SlowStochastic;
+/// use ta_panther::Next;
 ///
 /// let mut stoch = SlowStochastic::new(3, 2).unwrap();
 /// assert_eq!(stoch.next(10.0), 50.0);

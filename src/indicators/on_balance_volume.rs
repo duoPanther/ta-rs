@@ -28,8 +28,8 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// use ta::indicators::OnBalanceVolume;
-/// use ta::{Next, DataItem};
+/// use ta_panther::indicators::OnBalanceVolume;
+/// use ta_panther::{Next, DataItem};
 ///
 /// let mut obv = OnBalanceVolume::new();
 ///

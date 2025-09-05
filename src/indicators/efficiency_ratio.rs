@@ -17,8 +17,8 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// use ta::indicators::EfficiencyRatio;
-/// use ta::Next;
+/// use ta_panther::indicators::EfficiencyRatio;
+/// use ta_panther::Next;
 ///
 /// let mut er = EfficiencyRatio::new(4).unwrap();
 /// assert_eq!(er.next(10.0), 1.0);

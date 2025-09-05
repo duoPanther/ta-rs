@@ -23,8 +23,8 @@ use serde::{Deserialize, Serialize};
 /// # Example
 ///
 /// ```
-/// use ta::indicators::WeightedMovingAverage;
-/// use ta::Next;
+/// use ta_panther::indicators::WeightedMovingAverage;
+/// use ta_panther::Next;
 ///
 /// let mut wma = WeightedMovingAverage::new(3).unwrap();
 /// assert_eq!(wma.next(10.0), 10.0);
@@ -183,6 +183,7 @@ mod tests {
     #[test]
     fn test_display() {
         let wma = WeightedMovingAverage::new(7).unwrap();
+        println!("{}", wma); // 输出: WMA(7)
         assert_eq!(format!("{}", wma), "WMA(7)");
     }
 }

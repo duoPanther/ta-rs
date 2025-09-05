@@ -67,3 +67,17 @@ pub use self::money_flow_index::MoneyFlowIndex;
 
 mod on_balance_volume;
 pub use self::on_balance_volume::OnBalanceVolume;
+
+pub mod cross_above;
+pub use self::cross_above::CrossAbove;
+pub mod cross_below;
+pub use self::cross_below::CrossBelow;
+
+pub mod highest_high_value;
+pub use self::highest_high_value::HighestHighValue;
+
+pub mod linear_regression_prediction;
+pub use self::linear_regression_prediction::LinearRegressionPrediction;
+
+pub mod lowest_low_value;
+pub use self::lowest_low_value::LowestLowValue;
