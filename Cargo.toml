@@ -42,3 +42,6 @@ harness = false
 name = "ema_serde"
 path = "examples/ema_serde.rs"
 required-features = ["serde"]
+
+[features]
+serde = ["dep:serde"]
