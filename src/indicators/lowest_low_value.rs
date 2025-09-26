@@ -1,4 +1,4 @@
-#[cfg(feature = "serde")]
+
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use crate::errors::{Result, TaError};
@@ -28,8 +28,7 @@ use crate::{Next, Period, Reset};
 /// # Links
 ///
 #[doc(alias = "LLV")]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LowestLowValue {
     period: usize,
     index: usize,

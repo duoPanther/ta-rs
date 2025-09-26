@@ -5,7 +5,7 @@ extern crate ta_panther;
 
 #[cfg(test)]
 mod test {
-    #[cfg(feature = "serde")]
+
     mod serde {
         use ta_panther::indicators::SimpleMovingAverage;
         use ta_panther::Next;

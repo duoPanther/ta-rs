@@ -4,7 +4,6 @@ use crate::errors::Result;
 use crate::indicators::{ExponentialMovingAverage, TrueRange};
 use crate::{Close, High, Low, Next, Period, Reset};
 
-#[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
 /// Average true range (ATR).
@@ -57,8 +56,7 @@ use serde::{Deserialize, Serialize};
 ///     }
 /// }
 #[doc(alias = "ATR")]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AverageTrueRange {
     true_range: TrueRange,
     ema: ExponentialMovingAverage,

@@ -1,7 +1,7 @@
 use std::collections::VecDeque;
 use std::fmt;
 
-#[cfg(feature = "serde")]
+
 use serde::{Deserialize, Serialize};
 use crate::errors::{Result};
 use crate::{Next, Period, Reset};
@@ -43,8 +43,7 @@ use crate::{Next, Period, Reset};
 /// # Links
 ///
 #[doc(alias = "CROSS_BELOW")]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CrossBelow {
     threshold: f64,
     deque: VecDeque<f64>,

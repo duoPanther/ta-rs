@@ -1,11 +1,9 @@
 use std::error::Error;
 use std::fmt::{Display, Formatter};
 
-#[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 pub type Result<T> = std::result::Result<T, TaError>;
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum TaError {
     InvalidParameter,
     DataItemIncomplete,

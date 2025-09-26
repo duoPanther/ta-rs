@@ -1,7 +1,6 @@
 use crate::errors::*;
 use crate::traits::{Close, High, Low, Open, Volume};
 
-#[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
 /// Data item is used as an input for indicators.
@@ -28,8 +27,7 @@ use serde::{Deserialize, Serialize};
 /// assert_eq!(item.volume(), 7500.0);
 /// ```
 ///
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct DataItem {
     open: f64,
     high: f64,

@@ -41,14 +41,13 @@ use std::fmt;
 ///
 /// # Links
 ///
-#[cfg(feature = "serde")]
+
 use serde::{Deserialize, Serialize};
 use crate::errors::{Result, TaError};
 use crate::{Next, Period, Reset};
 
 #[doc(alias = "FORECAST")]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LinearRegressionPrediction {
     period: usize,
     deque: VecDeque<f64>,
