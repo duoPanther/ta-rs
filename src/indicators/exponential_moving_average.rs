@@ -1,7 +1,7 @@
 use std::fmt;
 
 use crate::errors::{Result, TaError};
-use crate::{Close, Next, Period, Reset};
+use crate::{Close, Next, State, Period, Reset};
 
 use serde::{Deserialize, Serialize};
 
@@ -73,6 +73,18 @@ impl ExponentialMovingAverage {
             }),
         }
     }
+
+    pub fn from_state(period: usize, current: f64) -> Result<Self> {
+        match period {
+            0 => Err(TaError::InvalidParameter),
+            _ => Ok(Self {
+                period,
+                k: 2.0 / (period + 1) as f64,
+                current,
+                is_new: false,
+            }),
+        }
+    }
 }
 
 impl Period for ExponentialMovingAverage {
@@ -92,6 +104,14 @@ impl Next<f64> for ExponentialMovingAverage {
             self.current = self.k * input + (1.0 - self.k) * self.current;
         }
         self.current
+    }
+}
+
+impl State for ExponentialMovingAverage {
+    type Output = (usize, f64);
+
+    fn state(&self) -> Self::Output {
+        (self.period, self.current)
     }
 }
 

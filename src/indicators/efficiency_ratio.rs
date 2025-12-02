@@ -1,7 +1,7 @@
 use std::fmt;
 
 use crate::errors::{Result, TaError};
-use crate::traits::{Close, Next, Period, Reset};
+use crate::{Close, Next, Period, Reset};
 
 use serde::{Deserialize, Serialize};
 

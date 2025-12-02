@@ -1,5 +1,5 @@
 use crate::errors::*;
-use crate::traits::{Close, High, Low, Open, Volume};
+use crate::{Close, High, Low, Open, Volume};
 
 use serde::{Deserialize, Serialize};
 

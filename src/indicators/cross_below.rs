@@ -4,7 +4,7 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 use crate::errors::{Result};
-use crate::{Next, Period, Reset};
+use crate::{Next, Period, Reset, State};
 
 /// Cross Below Indicator.
 ///
@@ -80,6 +80,14 @@ impl Next<f64> for CrossBelow {
         let prev = self.deque[0];
         let curr = self.deque[1];
         prev >= self.threshold && curr < self.threshold
+    }
+}
+
+impl State for CrossBelow {
+    type Output = (f64, f64, f64);
+
+    fn state(&self) -> Self::Output {
+        (self.threshold, self.deque[0], self.deque[1])
     }
 }
 

@@ -4,7 +4,7 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 use crate::errors::{Result};
-use crate::{Next, Period, Reset};
+use crate::{Next, Period, Reset, State};
 
 /// Cross Above Indicator.
 ///
@@ -56,6 +56,17 @@ impl CrossAbove {
             deque: VecDeque::with_capacity(2),
         })
     }
+
+    pub fn from_state(threshold: f64, mut deque: VecDeque<f64>) -> Result<Self> {
+        while deque.len() > 2 {
+            deque.pop_front();
+        }
+
+        Ok(Self {
+            threshold,
+            deque
+        })
+    }
 }
 
 impl Period for CrossAbove {
@@ -80,6 +91,14 @@ impl Next<f64> for CrossAbove {
         let prev = self.deque[0];
         let curr = self.deque[1];
         prev <= self.threshold && curr > self.threshold
+    }
+}
+
+impl State for CrossAbove {
+    type Output = (f64, f64, f64);
+
+    fn state(&self) -> Self::Output {
+        (self.threshold, self.deque[0], self.deque[1])
     }
 }
 

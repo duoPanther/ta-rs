@@ -2,7 +2,7 @@ use std::fmt;
 
 use crate::errors::Result;
 use crate::indicators::ExponentialMovingAverage as Ema;
-use crate::{Close, Next, Period, Reset};
+use crate::{Close, Next, Period, Reset, State};
 
 use serde::{Deserialize, Serialize};
 
@@ -88,6 +88,16 @@ impl RelativeStrengthIndex {
             is_new: true,
         })
     }
+
+    pub fn from_state(period: usize, up_ema_current: f64, down_ema_current: f64, prev_val: f64) -> Result<Self> {
+        Ok(Self {
+            period,
+            up_ema_indicator: Ema::from_state(period, up_ema_current)?,
+            down_ema_indicator: Ema::from_state(period, down_ema_current)?,
+            prev_val,
+            is_new: false,
+        })
+    }
 }
 
 impl Period for RelativeStrengthIndex {
@@ -120,6 +130,17 @@ impl Next<f64> for RelativeStrengthIndex {
         let up_ema = self.up_ema_indicator.next(up);
         let down_ema = self.down_ema_indicator.next(down);
         100.0 * up_ema / (up_ema + down_ema)
+    }
+}
+
+impl State for RelativeStrengthIndex {
+    type Output = (usize, f64, f64, f64);
+
+    fn state(&self) -> Self::Output {
+        let (_, up_ema_current) =self.up_ema_indicator.state();
+        let (_, down_ema_current) =self.down_ema_indicator.state();
+
+        (self.period, up_ema_current, down_ema_current, self.prev_val)
     }
 }
 
