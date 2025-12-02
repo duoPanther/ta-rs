@@ -1,6 +1,6 @@
 [package]
 name = "ta-panther"
-version = "0.8.0"
+version = "0.8.1"
 authors = ["Sergey Potapov <metagalaxy2panther@gmail.com>"]
 edition = "2021"
 description = "Technical analysis library. Implements number of indicators: EMA, SMA, RSI, MACD, Stochastic, etc."

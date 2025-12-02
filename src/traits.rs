@@ -27,7 +27,7 @@ pub trait Next<T> {
 
 pub trait State {
     type Output;
-    fn state(&mut self) -> Self::Output;
+    fn state(&self) -> Self::Output;
 }
 
 /// Open price of a particular period.
